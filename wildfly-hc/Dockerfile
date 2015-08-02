@@ -1,5 +1,5 @@
 #
-# WildFly9 Dockerfile
+# WildFly Host Controller docker file
 #
 # Pull the JDK base image
 
@@ -18,16 +18,16 @@ RUN cd $HOME && curl http://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-
 ENV JBOSS_HOME /opt/jboss/wildfly
 
 # Copy the script to change the default password
-ADD scripts /opt/jboss/wildfly/bin
-
-# Execute the script
-RUN $JBOSS_HOME/bin/set_password.sh
+ADD scripts /opt/jboss/wildfly/domain/configuration
 
 # Create User.
 RUN $JBOSS_HOME/bin/add-user.sh demo demo --silent
 
+# Execute the script
+RUN /opt/jboss/wildfly/domain/configuration/set_auth.sh
+
 EXPOSE 8080 9990 9999
 
-CMD ["/opt/jboss/wildfly/bin/domain.sh", "-b", "192.168.59.103", "-bmanagement", "192.168.59.103", "-Djboss.domain.master.address=192.168.59.103", "--host-config", "host-slave.xml"]
+#CMD ["/opt/jboss/wildfly/bin/domain.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0", "-Djboss.domain.master.address=$DC_ADDRESS", "--host-config", "host-slave.xml"]
 
-#CMD ["/bin/bash"]
+CMD ["/bin/bash"]

@@ -11,7 +11,7 @@ echo ${as_is}
 sed -e "s/$default_password/$new_password/g" -i  $HOST_CONFIG_HOME/host-slave.xml
 
 #export add_username='demo'
-#export user_line_no=$(cat -n $HOST_CONFIG_HOME/host-slave.xml|grep -i 'remote host'|awk '{print $1}')
+export user_line_no=$(cat -n $HOST_CONFIG_HOME/host-slave.xml|grep -i 'remote security-realm="ManagementRealm"'|awk '{print $1}')
 
-#echo sed -e "${user_line_no}s/static-discovery/${username}/g" $HOST_CONFIG_HOME/host-slave.xml
-#sed -e "${user_line_no}s/static-discovery/static-discovery username='${username}'/g" -i $HOST_CONFIG_HOME/host-slave.xml
+echo sed -e "s/remote security-realm/remote username=\"${username}\" security-realm/g" -i $HOST_CONFIG_HOME/host-slave.xml
+sed -e "s/remote security-realm/remote username=\"${username}\" security-realm/g" -i $HOST_CONFIG_HOME/host-slave.xml
