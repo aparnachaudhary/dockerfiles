@@ -21,7 +21,7 @@ ENV JBOSS_HOME /opt/jboss/wildfly
 RUN $JBOSS_HOME/bin/add-user.sh demo demo --silent
 
 # Copy the script to change the default password
-ADD set_password.sh $JBOSS_HOME/bin
+COPY set_password.sh $JBOSS_HOME/bin
 
 # Execute the script
 RUN $JBOSS_HOME/bin/set_password.sh
