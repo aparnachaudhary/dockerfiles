@@ -20,4 +20,6 @@ ENV JBOSS_HOME /opt/jboss/wildfly
 # Create User.
 RUN /opt/jboss/wildfly/bin/add-user.sh demo demo --silent
 
+EXPOSE 8080 9990 9999
+
 CMD ["/opt/jboss/wildfly/bin/domain.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0", "--host-config", "host-master.xml"]
