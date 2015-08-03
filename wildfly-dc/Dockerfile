@@ -22,4 +22,6 @@ RUN /opt/jboss/wildfly/bin/add-user.sh demo demo --silent
 
 EXPOSE 8080 9990 9999
 
-CMD ["/opt/jboss/wildfly/bin/domain.sh", "-b", "192.168.59.103", "-bmanagement", "192.168.59.103", "--host-config", "host-master.xml"]
+#CMD ["/opt/jboss/wildfly/bin/domain.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0", "--host-config", "host-master.xml"]
+
+CMD ["/bin/bash"]
