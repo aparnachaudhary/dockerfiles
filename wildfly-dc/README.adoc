@@ -1,0 +1,15 @@
+== Dockerfile for WildFly domain controller
+
+Running the container:
+
+[source,bash]
+-------------
+docker run -it -p 9990:9990 -p 9999:9999 aparnachaudhary/wildfly-dc:9.0.0.Final
+-------------
+
+Starting Domain Controller process:
+
+[source,bash]
+-------------
+sh /opt/jboss/wildfly/bin/domain.sh -b 0.0.0.0 -bmanagement 0.0.0.0 --host-config host-master.xml
+-------------
