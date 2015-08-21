@@ -4,7 +4,7 @@ Running the container:
 
 [source,bash]
 -------------
-docker run -it -p 9990:9990 -p 9999:9999 aparnachaudhary/wildfly-dc:9.0.0.Final
+docker run -it -p 9990:9990 -p 9999:9999 aparnachaudhary/wildfly-dc:10.0.0.Beta1
 -------------
 
 Starting Domain Controller process:
